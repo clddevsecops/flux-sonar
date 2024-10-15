@@ -1,22 +1,23 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: sonarqube
+  name: postgres
   namespace: default
 spec:
-  releaseName: sonarqube
+  releaseName: postgres
   chart:
     spec:
-      chart: sonarqube
+      chart: postgresql
       sourceRef:
         kind: HelmRepository
-        name: sonarqube
+        name: bitnami
         namespace: flux-system
   values:
-    postgresql:
-      enabled: true
-      postgresqlDatabase: sonarqube
-      postgresqlUsername: sonar
-      postgresqlPassword: your_password_here  # Use secrets in production
-    service:
-      type: ClusterIP
+    global:
+      postgresql:
+        postgresqlDatabase: sonarqube
+        postgresqlUsername: sonar
+        postgresqlPassword:
+          secretKeyRef:
+            name: postgres-password
+            key: password
