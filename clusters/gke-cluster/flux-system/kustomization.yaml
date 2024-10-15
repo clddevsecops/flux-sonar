@@ -6,14 +6,13 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: "./clusters/gke-cluster"  # Ensure this is the correct relative path
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-sonar
     namespace: flux-system
   resources:
-    - helm-repo.yaml               # Ensure your Helm repo manifest is listed here
+    - helm-repo.yaml
     - postgres/postgres-helmrelease.yaml
     - sonarqube/sonarqube-helmrelease.yaml
     - ingress/sonar-ingress.yaml
