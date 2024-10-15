@@ -13,6 +13,7 @@ spec:
     namespace: flux-system
   resources:
     - helm-repo.yaml
+    - helm-repo2.yaml
     - postgres/postgres-helmrelease.yaml
     - sonarqube/sonarqube-helmrelease.yaml
     - ingress/sonar-ingress.yaml
