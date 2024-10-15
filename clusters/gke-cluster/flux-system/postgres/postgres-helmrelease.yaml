@@ -17,4 +17,7 @@ spec:
       postgresql:
         postgresqlDatabase: sonarqube
         postgresqlUsername: sonar
-        postgresqlPassword: your_password_here  # Use secrets in production
+        postgresqlPassword:
+          secretKeyRef:
+            name: postgres-password
+            key: password
