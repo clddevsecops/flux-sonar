@@ -1,4 +1,3 @@
-
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
@@ -7,14 +6,4 @@ metadata:
 spec:
   interval: 1h
   url: https://charts.bitnami.com/bitnami
-
----
-apiVersion: source.toolkit.fluxcd.io/v1beta1
-kind: HelmRepository
-metadata:
-  name: sonarqube
-  namespace: flux-system
-spec:
-  interval: 1h
-  url: https://SonarSource.github.io/helm-sonarqube
 
