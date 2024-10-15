@@ -1,5 +1,18 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
-resources:
-- gotk-components.yaml
-- gotk-sync.yaml
+metadata:
+  name: flux-system
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: "./clusters/gke-cluster"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-sonar
+    namespace: flux-system
+  resources:
+    - helm-repo.yaml              # Ensure your Helm repo manifest is listed here
+    - postgres/postgres-helmrelease.yaml
+    - sonarqube/sonarqube-helmrelease.yaml
+    - ingress/sonar-ingress.yaml
