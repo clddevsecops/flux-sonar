@@ -15,4 +15,4 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1h
-  url: https://sonarsource.github.io/helm-sonarqube
+  url: https://SonarSource.github.io/helm-chart-sonarqube
