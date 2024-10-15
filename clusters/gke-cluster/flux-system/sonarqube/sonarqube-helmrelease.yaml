@@ -7,10 +7,11 @@ spec:
   releaseName: sonarqube
   chart:
     spec:
-      chart: sonarqube
+      chart: bitnami/sonarqube  # Ensure you specify the correct repository and chart name
+      version: 6.0.0            # Use the chart version you want to deploy
       sourceRef:
         kind: HelmRepository
-        name: sonarqube
+        name: bitnami            # Name of the Helm repository
         namespace: flux-system
   values:
     postgresql:
